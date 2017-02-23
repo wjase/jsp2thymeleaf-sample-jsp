@@ -2,13 +2,10 @@
     <a class="navbar-brand" href="#">JSP2Thymeleaf Migration Sample</a>
     <ul class="nav navbar-nav">
         <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/">JSP Home<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
+            <a class="nav-link" href="/thymeleaf_home">Thymeleaf Home</a>
         </li>
     </ul>
 </nav>

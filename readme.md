@@ -1,6 +1,6 @@
 # JSP2Thmyeleaf Migration Sample Project - stage 0
 
-## Introduction
+## Stage 0 - Introduction
 
 This guide shows the process for converting a JSP project to Thymeleaf using the JSP2Thymeleaf
 tool set and libraries. JSP2Thymeleaf provides both tools to convert JSP templates into Thymeleaf ones,
@@ -66,28 +66,62 @@ So, how do we move our pages from JSP's to Thymeleaf? To answer this question, l
   Sorry, but if you have java inserted into your templates it will be detected
   by the JSP2Thymeleaf converter and commented out for you to... attend to.
   
-  Seriously, though - consider using Thymeleaf's custom processors to help you, 
-  as you should have used JSP taglibs and custom tags in the JSP world.
+  Seriously, though - consider using Thymeleaf's custom processors and dialects 
+  to help you out of your current pit, just as you should have used JSP taglibs 
+  and custom tags in the JSP world. Also, consider using the Spring Expression
+  Language (SPEL) to achieve your nefarious ends instead of resorting to naked 
+  Java.
 
-  I'll paraphrase Yoda, when I say that inserting java into JSPs is "...faster,
-  more seductive, but once you head down that pathway forever will it dominate
-  you" 
+  I'll paraphrase Yoda, when I say that inserting java directly into JSPs is 
+  "...faster, more seductive, but once you head down that pathway forever will 
+  it dominate you" - ok he wasn't talking about inserting java into JSP's - he 
+  was talking about a Dark Force ... actually maybe he was talking about 
+  inserting java into JSPs.  
 
 * How do we stage a migration?
 
   Great question! OK - here are the steps. (We'll go through them in detail in 
-  each step.)
+  each GIT stage.)
  
-  # Locate any embedded java code in JSP's and start reading up on Thymeleaf Custom
-    Dialects if you do.
-  
-  # Do an audit of any custom taglibs (other than JSTL) you're using. If you have any
-    you'll need to work out the equivalent Thymeleaf construct. Once you've figured
-    out what needs to be done by the converter you can specify that in a custom
-    taglib converter in groovy.
+  # Add the spring-thymeleaf-jsp library to your pom. This sets up configuration
+    which will allow thymeleaf to co-exist with existing JSP pages, and also allows
+    JSP pages to include converted Thymeleaf fragments, so you only need one set of 
+    things like headers and footers.
 
-    You can also choose to defer that by registering a commenting converter which
-    simply comments out any things it doesn't understand.
+  # Start work on a fragment, like a header or footer. They're smaller and can 
+    be shared in both JSPs and Thymeleaf.
+ 
+    You can either do it manually or by running JSP2Thymeleaf on a file:
 
-  # Start work on a fragment, like a header or footer. That way your new templates
-    and JSPs
+    java -jar [path...to]jsp2thymeleaf.jar -f [path...to]input.jsp -o [path for thymeleaf templates] -u
+
+    The -u tells J2T to hunt for any includes of the file you changed and update them.
+
+    Spring Boot expects to find templates in src/main/resources/templates.
+
+    If you get error messages then you may need to add your own taglib converters
+    or massage tricky bits which defeat the JSP2Thymeleaf parser.
+
+    The reason I suggest starting with fragments, is that the compatability layer
+    in spring-thymeleaf-jsp allows JSP's to include TL templates, but not the reverse.
+
+  # If you use any custom taglibs, you can create custom converters (which might need
+    custom dialects at runtime too). See the Custom Taglibs Howto.md in the Jsp2Thymeleaf docs folder.
+
+  # Rinse and repeat. Keep converting fragments and then running your automated
+    web tests (you do have automated web tests, right?) as you go to make sure nothing
+    is broken.
+
+  # Finally remove the JSP related dependencies from your POM, and make yourself
+    a nice hot cup of tea. Welcome to the future.
+
+ * Where to now?
+    
+    Let's not get ahead of ourselves. The next stage, stage_1 shows is where we 
+    add the compatability library.
+
+    To go there now, type:
+
+    git checkout stage-1
+
+    and then refresh this file. The new bits will appear at the top.

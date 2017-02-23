@@ -6,7 +6,7 @@
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-        <!--The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags--> 
+         <!--The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags--> 
         <meta name="description" content=""/>
         <meta name="author" content=""/>
         <link rel="icon" href="favicon.ico"/>
@@ -32,18 +32,19 @@
             <%@include file="includes/fragments/foreach_2.jsp" %>
             <%@include file="includes/fragments/fortokens.jsp" %>
             <%@include file="includes/fragments/choose.jsp" %>
+
         </div>
 
-        <hr/>
+    <hr/>
 
-        <%@include file="includes/footer.jsp" %>
+    <%@include file="includes/footer.jsp" %>
 
-        <!-- /container -->
+<!-- /container -->
 
-        <!-- Bootstrap core JavaScript
-        ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-        <script src="/webjars/jquery/3.1.1/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
-        <script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    </body>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="/webjars/jquery/3.1.1/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+<script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
 </html>
